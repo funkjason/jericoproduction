@@ -1,0 +1,668 @@
+
+/* Reseteando márgenes y padding */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ******fondo con estilos animados******* */
+body {
+    margin: auto;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
+    background: linear-gradient(315deg, rgb(179, 79, 172) 3%, rgb(17, 63, 109) 38%, rgb(11, 95, 90) 68%, rgb(155, 28, 28) 98%);
+    animation: gradient 15s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.wave {
+    background: rgb(255 255 255 / 25%);
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 12em;
+    animation: wave 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 18s linear reverse infinite;
+    opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 20s -1s reverse infinite;
+    opacity: 0.9;
+}
+
+@keyframes wave {
+    2% {
+        transform: translateX(1);
+    }
+
+    25% {
+        transform: translateX(-25%);
+    }
+
+    50% {
+        transform: translateX(-50%);
+    }
+
+    75% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(1);
+    }
+}
+/* ****************************fin de estilos de fondo ****************** */
+/* *********************************************************************** */
+
+/* ************************ */
+/* ********header******** */
+
+
+header {
+    width: 100%;
+    margin: 0 auto;
+    /* background-color: antiquewhite; */
+    padding: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+
+/* ****logo***** */
+.logo {
+    width: 9.375rem;
+    height: 4.375rem;
+    border: .0625rem solid black;
+    border-radius: .5rem;
+}
+
+/* **************probando lineas para animación************** */
+
+.linea-animada {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /*align-content: center; */
+    width: 9.5rem;
+    height: 4.4375rem;
+    border-radius: .625rem;
+    /* background-color: black; */
+    overflow: hidden;
+}
+
+.linea-animada::before {
+    content: '';
+    position: absolute;
+    width: 13.75rem;
+    height: 80%;
+    background-color: white;
+    box-shadow: 0 0 1.25rem rgb(8, 8, 8);
+    animation: animate 4s linear infinite;
+    z-index: -1;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ****************fin de linea animada en el logo************** */
+
+/* ***************************** */
+/*******menu hamburguesa *******/
+
+:root {
+    /* aqui son los cambios de raiz sobre los colores para cada contenedor, desde la raíz se podria realizar los cambios sin necesidad de ir a cada contenedor.*/
+    --background-secondary: rgb(109, 89, 60);
+    --background-light: rgb(218, 195, 152);
+    --color-blanco: #fff;
+    --color-links: #f12b10;
+}
+
+.navbar {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    margin-right: 6%;
+    /* este margin da el pequeño espacio de desplazamiento del menu hacia la izquierda.*/
+    /* padding: 10px 20px; */
+    /* background-color: var(--background-primary); */
+}
+
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.nav-links li a {
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-size: 20px;
+    height: 100%;
+}
+
+.nav-links li a:hover {
+    color: var(--color-links);
+}
+
+.linea {
+    display: block;
+    width: 50px;
+    height: 3px;
+    margin: 6px 0;
+    background-color: var(--color-blanco);
+}
+
+
+.menu-hamburguesa {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.check-menu {
+    display: none;
+}
+
+.label-check {
+    display: none;
+}
+
+
+/* ****efecto hover en el menu */
+
+ul li a:hover {
+    transition: color 0.3s;
+    font-size: 1.5rem;
+}
+
+ul li a {
+    position: relative;
+    text-decoration: none;
+    /* color: white; */
+    padding: 0 10px;
+}
+
+ul li a:after {
+    content: "";
+    position: absolute;
+    background-color: rgb(236, 79, 17);
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+
+ul li a:hover:after {
+    width: 100%;
+}
+/* ********************fin de menu******************************* */
+
+
+
+/**********titulos de formulario*********/
+
+p {
+    color: white;
+}
+
+.title-private {
+    color: white;
+}
+
+/* ***************************** */
+/********** form fuera *********************/
+
+form {
+
+    /* background: #fff;*/
+    padding: 40px 0;
+    box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    background: transparent;
+    width: 400px;
+    display: flex;
+    margin: auto;
+}
+
+
+
+
+/* *****el grosor de las letras */
+.grupo{
+    font-weight:lighter;
+}
+/* ******************** */
+
+/******tamaño del formulario**** */
+form .grupo {
+
+    position: relative;
+    margin: 20px;
+    
+}
+
+input {
+    background: none;
+    /* color: #c6c6c6; */ /* este es el color cuando dejas escrito el formulario.*/
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none; 
+    border-bottom: 1px solid rgb(206, 190, 99);
+    color: white;
+}
+
+
+/* color dentro del recuadro */
+input:focus {
+    outline: none; /* para que no sea visible el recuadro al darle click al formulario*/
+
+    color: white;
+}
+/* ************************* */
+
+
+/****** privacidad****** */
+.checkbox {
+    cursor: pointer;
+}
+/* ****************** */
+
+
+.datos{
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    left: 0;
+    top: -16px;
+    /* transition:0.5s ease; */
+    pointer-events: none;
+    /* eventos del mouse*/
+}
+
+
+
+/* ****text area bloqueado */
+textarea{
+    resize: none;
+    width: 100%;
+
+}
+/* ****************** */
+
+/* **************************************************************** */
+/* *******estilos de los botones enviar y borrar formulario******* */
+/* *************************************************************** */
+
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+
+    position: relative;
+    transition: .3s linear;
+
+}
+
+.btn {
+    padding: 10px 15px;
+    border-radius: 8px;
+ 
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgb(252, 172, 24);
+    box-shadow: 0 0 5px rgb(252, 172, 24), 0 0 25px rgb(252, 172, 24), 0 0 50px rgb(252, 172, 24), 0 0 100px rgb(252, 172, 24), 0 0 300px rgb(252, 172, 24);
+}
+
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+/* ************************fin de formulario************ */
+
+
+/* ****************FOOTER***************** */
+/* *************************************** */
+footer {
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-rows: auto auto;
+    gap: 20px;
+    margin-top: auto; 
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.582);
+    text-align: center;
+    padding-left: 10%;
+}
+
+.container-form{
+    margin-bottom: 10%;
+}
+
+
+
+/* ************************************************************************/
+/* Tamaño de ícono de cámara.*/
+
+.logocam {
+    width: 25%;
+}
+
+
+/* ********************************************************************** */
+/* *****REDES SOCIALES**** */
+/* estilos de titulos de: redes sociales */
+
+.social p{
+    position: relative;
+    display: inline-block;
+}
+.social p::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(236, 79, 17) ;
+    transform: scale(0);
+    transform-origin: bottom right;
+    transition: transform 0.6s ease-out;
+}
+.social p:hover::after{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.social p:hover{
+    font-size: 1.2rem;
+    cursor: pointer;
+    color:  rgb(221, 212, 91);
+}
+/* ********************************************************* */
+
+
+
+.social-icons {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 50px;
+}
+
+.redsocial {
+    width: 10%;
+    transition: transform 0.3s ease;
+}
+.social-icons .redsocial:hover{
+    background-color: #f19720;
+    border-radius: 8px;
+    transform: scale(1.3);
+}
+
+
+/* ******************************************************************** */
+
+
+
+/* ********************************* */
+/* ************contactos*********** */
+.contacto {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 50px;
+}
+
+.contacto .iconos-contacto:hover{
+    background-color: #f19720;
+    border-radius: 8px;
+    transform: scale(1.3);
+
+}
+
+
+/* *******tamaño iconocos********* */
+.iconos-contacto {
+    width: 10%;
+    transition: transform 0.3s ease;
+}
+
+
+/* color de letra */
+.contacto a {
+    color: white;
+    text-decoration: none;
+}
+
+
+
+
+
+/* ************************* */
+/* ***Button Formulario*** */
+/* ************************* */
+
+.button {
+    position: relative;
+    padding: .625rem .9375rem;
+    border-radius: .5rem;
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(.0625rem);
+    cursor: pointer;
+    transition: .5s;
+    overflow: hidden;
+
+    width: 11.25rem;
+    height: 3.125rem;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+
+}
+
+.button {
+    color: white;
+}
+
+.button:hover {
+    color: rgb(252, 172, 24);
+}
+
+.button span {
+    position: absolute;
+    background-color: rgb(236, 79, 17);
+    transition: all .5s;
+}
+
+/* dándole forma a los span para las lineas del titulo*/
+.button span:nth-child(1) {
+    width: 100%;
+    height: .125rem;
+    top: 0;
+    left: -100%;
+}
+
+.button span:nth-child(2) {
+    width: 100%;
+    height: .125rem;
+    bottom: 0;
+    right: -100%;
+}
+
+.button span:nth-child(3) {
+    width: .125rem;
+    height: 100%;
+    bottom: -100%;
+    left: 0;
+}
+
+.button span:nth-child(4) {
+    width: .125rem;
+    height: 100%;
+    top: -100%;
+    right: 0;
+}
+
+/* ahora colocamos a cada caja para el hover */
+.button:hover span:nth-child(1) {
+    left: 0;
+}
+
+.button:hover span:nth-child(2) {
+    right: 0;
+}
+
+.button:hover span:nth-child(3) {
+    bottom: 0;
+}
+
+.button:hover span:nth-child(4) {
+    top: 0;
+}
+
+
+/* *************************************** */
+/* **********fin del estilo botton************* */
+
+
+
+/* pie de pagina centrado */
+
+.copy {
+    grid-column: 1 / -1;
+    justify-self: center;
+    
+}
+
+/******************fin footer***********************  */
+
+
+
+
+
+
+
+
+/* ******************************* */
+/********mediaquearins********/
+
+@media (max-width: 768px) {
+    .menu-hamburguesa {
+        display: flex;
+    }
+
+    .label-check {
+        display: block;
+    }
+
+    /* cuando el menu se abre en forma hamburguesa */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        padding: 20px;
+        top: 100%;
+        width: 225px;
+        right: 0;
+        /* background-color: var(--background-secondary); */
+        gap: 5;
+        opacity: 0.95;
+        border-radius: 8px;
+        z-index: 1;
+
+        /* ******************************************************* */
+        /* ***probando lineas *******/
+
+        background: linear-gradient(315deg, rgb(179, 79, 172) 3%, rgb(17, 63, 109) 38%, rgb(11, 95, 90) 68%, rgb(155, 28, 28) 98%);
+
+        animation: gradient 15s ease infinite;
+        background-size: 400% 400%;
+        background-attachment: fixed;
+
+ 
+    }
+
+/* *********************************************** */
+    /* ************************************** */
+    /* alineación del mismo menu al abrir */
+    .nav-links li a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+    }
+
+    /* ********************************** */
+    .nav-links li a:hover {
+        background-color: var(--background-light);
+        border-radius: 8px;
+
+    }
+
+    .check-menu:checked+.nav-links {
+        display: flex;
+
+    }
+
+    .copy {
+        margin: 0 auto;
+    }
+}
+
+
+/* *************************** */
+/* ******************************************************** */
+
+
